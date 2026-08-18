@@ -52,6 +52,7 @@ body {
     text-align: right;
     font-family: 'Courier New', Courier, monospace;
     margin-right: 5px;
+    overflow:hidden;
 }
 #display-top{
     margin-top: 5px;
