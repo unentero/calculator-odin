@@ -21,7 +21,10 @@ if(b != 0){
 }
 return result.toFixed(3)
 };
-
+const modulo = function(a,b){
+    result = a % b
+    return result.toFixed(3)
+}
 // operate function
 const operate = function(numA,numB,operator){
     switch (operator){
@@ -33,6 +36,8 @@ const operate = function(numA,numB,operator){
             return multiply(numA,numB);
         case "/": 
             return divide(numA,numB);
+        case "%":
+            return modulo(numA,numB);
     }
 }
 
@@ -72,7 +77,6 @@ const calculator = function(){
     const btnThree = document.getElementById("three");
     const btnMinus = document.getElementById("minus");
 
-    const btnAbs = document.getElementById("abs");
     const btnZero = document.getElementById("zero");
     const btnPoint = document.getElementById("point");
     const btnEqual = document.getElementById("equal");
@@ -180,6 +184,9 @@ const calculator = function(){
             firstNumber = '';
             secondNumber = '';
             operator = '';
+        }else if(secondNumber=='' && operator==''){
+            firstNumber = firstNumber;
+            updateDisplay();
         }else{
             result=operate(Number(firstNumber),Number(secondNumber),operator);
             firstNumber = result;
@@ -188,7 +195,7 @@ const calculator = function(){
             updateDisplay();
         }
     }
-
+    
     btnAdd.addEventListener('click',()=>{
         if (operator == ''){
             operator = '+'
@@ -225,11 +232,53 @@ const calculator = function(){
         }
         updateDisplay();
     });
+    btnMod.addEventListener('click',()=>{
+        if (operator == ''){
+            operator = '%'
+        } else {
+            resolve();
+            operator = '%'
+        }
+        updateDisplay();
+    })
     //equal button
-    
     btnEqual.addEventListener('click',()=>{
         resolve();
     });
+    //utility buttons
+    btnClear.addEventListener('click',()=>{
+        firstNumber = '';
+        secondNumber = '';
+        operator = '';
+        updateDisplay();
+    });
+    btnPoint.addEventListener('click',()=>{
+        if((firstNumber != '' && operator=='') && !firstNumber.includes('.')){
+            firstNumber+='.'
+            updateDisplay();
+        } else if((operator!='' && secondNumber!='') && !secondNumber.includes('.')){
+            secondNumber+='.'
+            updateDisplay();
+        }else{
+            btnPoint.disabled = true
+        }
+    })
+    function deleteLast(string){
+        stringChopped = string.slice(0,string.split('').length-1);
+        return stringChopped
+    }
+    btnDelete.addEventListener('click',()=>{
+        if(operator==''){
+            firstNumber = deleteLast(firstNumber);
+            updateDisplay();
+        } else if(operator!='' && secondNumber==''){
+            operator=''
+            updateDisplay();
+        }else{
+            secondNumber = deleteLast(secondNumber)
+            updateDisplay();
+        }
+    })
     
 }
 

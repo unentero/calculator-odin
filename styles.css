@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    background-color: antiquewhite;
+}
+
+#main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calc-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 250px;
+    height: 400px;
+    padding: 20px;
+    background-color: pink;
+    border: 2px solid pink;
+    border-radius: 10px;
+}
+
+#display {
+    width: 220px;
+    height: 60px;
+    background-color: rgb(171, 235, 238);
+    border: 2px solid rgb(130, 201, 205);
+    border-radius: 10px;
+}
+
+#buttons-body{
+    margin: 10px;
+}
+.buttons-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 5px;
+}
+.buttons-row button {
+    height: 60px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+#equal {
+    grid-column: span 2;
+}
+#display-top,
+#display-bottom {
+    text-align: right;
+    font-family: 'Courier New', Courier, monospace;
+    margin-right: 5px;
+}
+#display-top{
+    margin-top: 5px;
+    color:rgb(95, 158, 162);
+}
+#display-bottom{
+    color:rgb(53, 101, 105);
+}
+button{
+    background-color: rgb(250, 215, 247);
+    color: rgb(73, 56, 59);
+    font-weight: 500;
+    border-radius: 5px;
+    border-color: rgb(250, 215, 247);
+}
+#clear {
+    background-color: rgb(240, 106, 151);
+    color: rgb(255, 225, 231);
+    font-weight: 900;
+}
+#delete, 
+#add, 
+#multiply,
+#minus,
+#divide,
+#equal, #mod{
+   background-color: rgb(255, 145, 182);
+   color: rgb(255, 248, 249);
+}
