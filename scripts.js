@@ -23,3 +23,18 @@ if(b != 0){
 }
 return result
 };
+
+// operate function
+const operate = function(numA,numB,operator){
+    switch (operator){
+        case "+": 
+            return add(numA,numB);
+        case "-": 
+            return substract(numA,numB);
+        case "*": 
+            return multiply(numA,numB);
+        case "/": 
+            return divide(numA,numB);
+    }
+}
+
